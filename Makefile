@@ -6,14 +6,13 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/18 19:27:38 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/05/18 19:46:35 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	main.c \
         srcs/launch_tests.c \
         srcs/load_test.c \
-        srcs/utils.c \
         tests/strlen/00_strlen_basic.c \
         tests/strlen/01_strlen_null.c \
 
