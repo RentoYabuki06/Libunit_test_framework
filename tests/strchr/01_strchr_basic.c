@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   01_strchr_basic.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:59:36 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/18 19:55:57 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "tests/test_launchers.h"
+#include "libft.h"
+#include <string.h>
 
-int	main(void)
+int	strchr_basic_test(void)
 {
-    int	result;
+    char	*str;
+    char	*result;
 
-    result = 0;
-    ft_printf("%s==== LIBUNIT TESTS ====%s\n\n", BOLD_CYAN, RESET);
-    result |= strlen_launcher();
-    result |= strchr_launcher();
-    result |= atoi_launcher();
-    if (result == 0)
-        ft_printf("\n%sAll tests passed!%s\n", BOLD_GREEN, RESET);
+    str = "Hello, World!";
+    result = ft_strchr(str, 'W');
+    if (result == str + 7)
+        return (0);
     else
-        ft_printf("\n%sSome tests failed!%s\n", BOLD_RED, RESET);
-    return (result);
+        return (-1);
 }
-

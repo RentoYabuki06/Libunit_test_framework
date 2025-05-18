@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:47 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:17:02 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/18 20:00:23 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_unit_test	*create_unit_test_node(char *name, int (*test_func)(void))
 	if (new == NULL)
 	{
 		ft_putstr_fd("Error: malloc failed!\n", STDERR_FILENO);
-		return ;
+		return (NULL);
 	}
 	new->name = ft_strdup(name);
 	if (new->name == NULL)
@@ -29,7 +29,7 @@ static t_unit_test	*create_unit_test_node(char *name, int (*test_func)(void))
 		free(new);
 		new = NULL;
 		ft_putstr_fd("Error: strdup failed!\n", STDERR_FILENO);
-		return ;
+		return (NULL);
 	}
 	new->test_func = test_func;
 	new->next = NULL;

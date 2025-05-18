@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_strlen_null.c                                   :+:      :+:    :+:   */
+/*   00_strlen_launcher.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:27 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/18 19:55:41 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "libft.h"
+#include "strlen_tests.h"
 
-int	strlen_null_test(void)
+int	strlen_launcher(void)
 {
-    if (ft_strlen("") == 0)
-        return (0);
-    else
-        return (-1);
-}
+    t_unit_test	*test_list;
 
+    test_list = NULL;
+    ft_printf("STRLEN:\n");
+    load_test(&test_list, "Basic test", &strlen_basic_test);
+    load_test(&test_list, "Empty string test", &strlen_null_test);
+    return (launch_tests(test_list));
+}

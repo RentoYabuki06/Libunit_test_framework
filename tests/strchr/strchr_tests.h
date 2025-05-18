@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_strlen_null.c                                   :+:      :+:    :+:   */
+/*   strchr_tests.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:27 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/18 19:55:48 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
-#include "libft.h"
+#ifndef STRCHR_TESTS_H
+# define STRCHR_TESTS_H
 
-int	strlen_null_test(void)
-{
-    if (ft_strlen("") == 0)
-        return (0);
-    else
-        return (-1);
-}
+int	strchr_basic_test(void);
+int	strchr_not_found_test(void);
+int	strchr_null_terminator_test(void);
 
+#endif

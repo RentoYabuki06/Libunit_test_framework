@@ -6,23 +6,26 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:41:27 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/18 19:59:21 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBUNIT_H
 # define LIBUNIT_H
 
-#include <stdio.h>
-#include "libft.h"
-#include "printf.h"
-#include "colors.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include "libft.h"
+# include "ft_printf.h"
+# include "colors.h"
 
 typedef struct s_unit_test
 {
-	char*				name;
-	int					(*test_func)(void);
-	struct s_unit_test	*next;
+    char				*name;
+    int					(*test_func)(void);
+    struct s_unit_test	*next;
 }	t_unit_test;
 
 void	load_test(t_unit_test **list, char *name, int (*test_func)(void));

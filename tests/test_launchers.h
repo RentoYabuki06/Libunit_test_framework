@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_strlen_null.c                                   :+:      :+:    :+:   */
+/*   test_launchers.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:27 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/18 19:59:01 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
-#include "libft.h"
+#ifndef TEST_LAUNCHERS_H
+# define TEST_LAUNCHERS_H
 
-int	strlen_null_test(void)
-{
-    if (ft_strlen("") == 0)
-        return (0);
-    else
-        return (-1);
-}
+/* 各テストスイートのランチャー関数 */
+int	strlen_launcher(void);
+int	strchr_launcher(void);
+int	atoi_launcher(void);
 
+#endif
