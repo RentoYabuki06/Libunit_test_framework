@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 18:37:23 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/18 19:41:27 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define LIBUNIT_H
 
 #include <stdio.h>
+#include "libft.h"
+#include "printf.h"
+#include "colors.h"
 
 typedef struct s_unit_test
 {
