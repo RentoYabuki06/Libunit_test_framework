@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/23 20:18:48 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/23 20:46:59 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	print_result(char *name, int status)
             ft_printf("%s[PIPE]%s :", COLOR_SIG, RESET);
         else if (sig == SIGILL)
             ft_printf("%s[ILL]%s :", COLOR_SIG, RESET);
+        else if (sig == SIGTERM)
+            ft_printf("%s[TIME]%s :", COLOR_SIG, RESET);
         else
             ft_printf("%s[SIG %d]%s :", COLOR_SIG, sig, RESET);
     }
@@ -43,10 +45,39 @@ static void	print_result(char *name, int status)
 
 static void	print_final_result(int count_success, int count_tests)
 {
-	if (count_success == count_tests)
+    if (count_success == count_tests)
         ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_OK, count_success, count_tests, RESET);
     else
         ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_KO, count_success, count_tests, RESET);
+}
+
+static int wait_with_timeout(pid_t pid, int *status, int timeout)
+{
+    pid_t result;
+    time_t start_time;
+    time_t current_time;
+    int time_elapsed;
+
+    start_time = time(NULL);
+    while (1)
+    {
+        result = waitpid(pid, status, WNOHANG);
+        if (result != 0)
+            return result;
+        current_time = time(NULL);
+        time_elapsed = (int)(current_time - start_time);
+        
+        if (time_elapsed >= timeout)
+        {
+            kill(pid, SIGTERM);
+            usleep(10000);
+            if (waitpid(pid, status, WNOHANG) == 0)
+                kill(pid, SIGKILL);
+            waitpid(pid, status, 0);
+            return -1;
+        }
+        usleep(10000);
+    }
 }
 
 int	launch_tests(t_unit_test *list)
@@ -63,16 +94,17 @@ int	launch_tests(t_unit_test *list)
         pid = fork();
         if (pid == 0)
             exit(list->test_func());
-        waitpid(pid, &status, 0);
-        print_result(list->name, status);
+        if (wait_with_timeout(pid, &status, TIMEOUT_SECONDS) == -1)
+            ft_printf("%s[TIME]%s :%s (exceeded %d seconds)\n", COLOR_SIG, RESET, list->name, TIMEOUT_SECONDS);
+        else
+            print_result(list->name, status);
         if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
             count_success++;
         list = list->next;
         count_tests++;
     }
-	print_final_result(count_success, count_tests);
+    print_final_result(count_success, count_tests);
     if (count_success == count_tests)
         return (0);
-    else
-        return (-1);
+    return (-1);
 }

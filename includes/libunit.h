@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:59:21 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/23 20:46:55 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/wait.h>
+# include <sys/time.h>
 # include <signal.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "colors.h"
+
+#define TIMEOUT_SECONDS 10
 
 typedef struct s_unit_test
 {

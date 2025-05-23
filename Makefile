@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/23 20:29:47 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/05/23 20:45:50 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ SRCS =	main.c \
         tests/signals/03_abrt_test.c \
         tests/signals/04_fpe_test.c \
         tests/signals/05_pipe_test.c \
-        tests/signals/06_ill_test.c
+        tests/signals/06_ill_test.c \
+        tests/signals/07_timeout_test.c \
+        tests/signals/08_sleep_timeout_test.c
 
 OBJS = $(SRCS:.c=.o)
 
