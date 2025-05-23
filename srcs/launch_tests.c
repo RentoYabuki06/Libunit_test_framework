@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:43:57 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/23 20:18:48 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ static void	print_result(char *name, int status)
             ft_printf("%s[BUSE]%s :", COLOR_SIG, RESET);
         else if (sig == SIGABRT)
             ft_printf("%s[ABRT]%s :", COLOR_SIG, RESET);
+        else if (sig == SIGFPE)
+            ft_printf("%s[FPE]%s :", COLOR_SIG, RESET);
+        else if (sig == SIGPIPE)
+            ft_printf("%s[PIPE]%s :", COLOR_SIG, RESET);
+        else if (sig == SIGILL)
+            ft_printf("%s[ILL]%s :", COLOR_SIG, RESET);
         else
             ft_printf("%s[SIG %d]%s :", COLOR_SIG, sig, RESET);
     }
