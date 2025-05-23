@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:59:01 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/23 20:29:28 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 int	strlen_launcher(void);
 int	strchr_launcher(void);
 int	atoi_launcher(void);
+int	signals_launcher(void);
 
 #endif

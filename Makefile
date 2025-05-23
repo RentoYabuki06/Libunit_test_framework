@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/18 19:57:20 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/05/23 20:29:47 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,21 @@ SRCS =	main.c \
         tests/atoi/02_atoi_negative.c \
         tests/atoi/03_atoi_zero.c \
         tests/atoi/04_atoi_space.c \
-        tests/atoi/05_atoi_plus_sign.c
+        tests/atoi/05_atoi_plus_sign.c \
+        tests/signals/00_signals_launcher.c \
+        tests/signals/01_segv_test.c \
+        tests/signals/02_bus_test.c \
+        tests/signals/03_abrt_test.c \
+        tests/signals/04_fpe_test.c \
+        tests/signals/05_pipe_test.c \
+        tests/signals/06_ill_test.c
 
 OBJS = $(SRCS:.c=.o)
 
 NAME = libunit
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I./includes -I./tests/strlen -I./tests/strchr -I./tests/atoi -I./srcs/libft/includes -I./srcs/printf/includes 
+INCLUDES = -I./includes -I./tests/strlen -I./tests/strchr -I./tests/atoi -I./srcs/libft/includes -I./srcs/printf/includes -I./tests/signals
 
 LIBFT_DIR = srcs/libft
 LIBFT = $(LIBFT_DIR)/libft.a

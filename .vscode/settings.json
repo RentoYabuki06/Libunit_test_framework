@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"libunit.h": "c",
+		"libft.h": "c"
+	}
+}
