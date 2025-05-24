@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_bus_test_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 16:01:25 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:01:26 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 17:26:42 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #include <string.h>
 #include <unistd.h>
 
-int bus_test(void)
+int	bus_test(void)
 {
-    char buffer[sizeof(int)];
-    int *ptr;
-    
-    ptr = (int *)(buffer + 1);
-    *ptr = 42;
-    
-    return (0);
+	char	buffer[sizeof(int)];
+	int		*ptr;
+
+	ptr = (int *)(buffer + 1);
+	*ptr = 42;
+	return (0);
 }

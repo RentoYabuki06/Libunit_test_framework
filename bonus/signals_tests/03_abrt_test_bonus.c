@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_abrt_test_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 16:01:28 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:01:29 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 17:26:54 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-int abrt_test(void)
+int	abrt_test(void)
 {
-    abort();  // SIGABRTを発生させる
-    return (0);
+	abort();
+	return (0);
 }
