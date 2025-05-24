@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:07:00 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 17:59:05 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,12 @@ static void	print_result(char *name, int status)
 	ft_printf("%s\n", name);
 }
 
-int	launch_tests(t_unit_test *list)
+static void loop(t_unit_test *list, int *count_success, int *count_tests)
 {
-	pid_t	pid;
+    pid_t	pid;
 	int		status;
-	int		count_success;
-	int		count_tests;
 
-	count_success = 0;
-	count_tests = 0;
-	while (list)
+    while (list)
 	{
 		pid = fork();
 		if (pid == 0)
@@ -52,10 +48,24 @@ int	launch_tests(t_unit_test *list)
 		waitpid(pid, &status, 0);
 		print_result(list->name, status);
 		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
-			count_success++;
+			(*count_success)++;
 		list = list->next;
-		count_tests++;
+		(*count_tests)++;
 	}
+}
+
+int	launch_tests(t_unit_test **list)
+{
+	int		count_success;
+	int		count_tests;
+    t_unit_test *testlist;
+
+	count_success = 0;
+	count_tests = 0;
+    testlist = NULL;
+    if (*list)
+        testlist = *list;
+    loop(testlist, &count_success, &count_tests);
 	ft_printf("\n%d/%d tests passed.\n", count_success, count_tests);
 	if (count_success == count_tests)
 		return (0);

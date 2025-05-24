@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 17:45:23 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 17:59:31 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_unit_test
 }	t_unit_test;
 
 void	load_test(t_unit_test **list, char *name, int (*test_func)(void));
-int		launch_tests(t_unit_test *list);
+int		launch_tests(t_unit_test **list);
 void	free_tests(t_unit_test **list);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/24 16:11:18 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/05/24 18:00:26 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ COMMON_TESTS =	tests/strlen/00_strlen_launcher.c \
 MANDATORY_SRCS =	framework/main.c \
 		framework/launch_tests.c \
 		framework/load_test.c \
+		framework/free_tests.c \
 		$(COMMON_TESTS)
 
 BONUS_SRCS =	bonus/main_bonus.c \
