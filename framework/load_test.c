@@ -14,7 +14,7 @@
 
 static t_unit_test	*create_unit_test_node(char *name, int (*test_func)(void))
 {
-	t_unit_test *new;
+	t_unit_test	*new;
 
 	new = (t_unit_test *)malloc(sizeof(t_unit_test));
 	if (new == NULL)

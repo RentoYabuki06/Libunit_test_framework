@@ -22,9 +22,9 @@
 
 typedef struct s_unit_test
 {
-    char				*name;
-    int					(*test_func)(void);
-    struct s_unit_test	*next;
+	char				*name;
+	int					(*test_func)(void);
+	struct s_unit_test	*next;
 }	t_unit_test;
 
 void	load_test(t_unit_test **list, char *name, int (*test_func)(void));

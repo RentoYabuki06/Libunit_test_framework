@@ -15,19 +15,16 @@
 
 int	main(void)
 {
-    int	result;
+	int	result;
 
-    result = 0;
-    ft_printf("==== LIBUNIT TESTS ====\n\n");
-    result |= strlen_launcher();
-    result |= strchr_launcher();
-    result |= atoi_launcher();
-    
-    if (result == 0)
-        ft_printf("\nAll tests passed!\n");
-    else
-        ft_printf("\nSome tests failed!\n");
-        
-    return (result);
+	result = 0;
+	ft_printf("==== LIBUNIT TESTS ====\n\n");
+	result |= strlen_launcher();
+	result |= strchr_launcher();
+	result |= atoi_launcher();
+	if (result == 0)
+		ft_printf("\nAll tests passed!\n");
+	else
+		ft_printf("\nSome tests failed!\n");
+	return (result);
 }
-

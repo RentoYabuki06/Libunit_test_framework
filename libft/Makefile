@@ -22,8 +22,7 @@ SRCS_MEM = 	$(SRCS_DIR)/memory/ft_bzero.c \
 			$(SRCS_DIR)/memory/ft_memmove.c \
 			$(SRCS_DIR)/memory/ft_memset.c
 
-SRCS_PUT =	$(SRCS_DIR)/put_fd/ft_fprintf.c \
-			$(SRCS_DIR)/put_fd/ft_putchar_fd.c \
+SRCS_PUT =	$(SRCS_DIR)/put_fd/ft_putchar_fd.c \
 			$(SRCS_DIR)/put_fd/ft_putendl_fd.c \
 			$(SRCS_DIR)/put_fd/ft_putnbr_fd.c \
 			$(SRCS_DIR)/put_fd/ft_putstr_fd.c

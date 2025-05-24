@@ -22,13 +22,13 @@
 # include "../../printf/includes/ft_printf.h"
 # include "colors_bonus.h"
 
-#define TIMEOUT_SECONDS 10
+# define TIMEOUT_SECONDS 10
 
 typedef struct s_unit_test
 {
-    char				*name;
-    int					(*test_func)(void);
-    struct s_unit_test	*next;
+	char				*name;
+	int					(*test_func)(void);
+	struct s_unit_test	*next;
 }	t_unit_test;
 
 void	load_test(t_unit_test **list, char *name, int (*test_func)(void));
