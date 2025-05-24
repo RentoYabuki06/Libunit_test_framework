@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:58:59 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/24 17:22:10 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,19 @@ static void	print_result(char *name, int status, int sig)
 	ft_printf("%s\n", name);
 }
 
-static void	print_final_result(int c_success, int c_tests)
-{
-	if (c_success == c_tests)
-		ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_OK, c_success, c_tests, RESET);
-	else
-		ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_KO, c_success, c_tests, RESET);
-}
-
-static void alarm_handler(int sig)
+static void	alarm_handler(int sig)
 {
 	(void)sig;
 }
 
-static int wait_with_alarm(pid_t pid, int *status, int timeout_sec)
+static int	wait_with_alarm(pid_t pid, int *status, int timeout_sec)
 {
-	struct sigaction sa, old_sa;
-	pid_t result;
-	int was_timeout = 0;
+	struct sigaction	sa;
+	struct sigaction	old_sa;
+	pid_t				result;
+	int					was_timeout;
 
+	was_timeout = 0;
 	sa.sa_handler = alarm_handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = 0;
@@ -75,18 +69,16 @@ static int wait_with_alarm(pid_t pid, int *status, int timeout_sec)
 		waitpid(pid, status, WNOHANG);
 	}
 	sigaction(SIGALRM, &old_sa, NULL);
-	return was_timeout ? -1 : result;
+	if (was_timeout)
+		return (-1);
+	return (result);
 }
 
-int	launch_tests(t_unit_test *list)
+static void	loop(t_unit_test *list, int *count_success, int *count_tests)
 {
 	pid_t	pid;
 	int		status;
-	int		count_success;
-	int		count_tests;
 
-	count_success = 0;
-	count_tests = 0;
 	while (list)
 	{
 		pid = fork();
@@ -96,15 +88,32 @@ int	launch_tests(t_unit_test *list)
 			exit(list->test_func());
 		}
 		if (wait_with_alarm(pid, &status, TIMEOUT_SECONDS) == -1)
-			ft_printf("%s[TIME]%s :%s (exceeded %d seconds)\n", COLOR_SIG, RESET, list->name, TIMEOUT_SECONDS);
+		{
+			ft_printf("%s[TIME]%s :%s (exceeded %d seconds)\n",
+				COLOR_SIG, RESET, list->name, TIMEOUT_SECONDS);
+		}
 		else
 			print_result(list->name, status, 0);
 		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
-			count_success++;
+			(*count_success)++;
 		list = list->next;
-		count_tests++;
+		(*count_tests)++;
 	}
-	print_final_result(count_success, count_tests);
+}
+
+int	launch_tests(t_unit_test *list)
+{
+	int		count_success;
+	int		count_tests;
+
+	count_success = 0;
+	count_tests = 0;
+	loop(list, &count_success, &count_tests);
+	if (count_success == count_tests)
+		ft_printf("\n%s%d/%d", COLOR_OK, count_success, count_tests);
+	else
+		ft_printf("\n%s%d/%d", COLOR_KO, count_success, count_tests);
+	ft_printf("tests passed.%s\n", RESET);
 	if (count_success == count_tests)
 		return (0);
 	return (-1);
