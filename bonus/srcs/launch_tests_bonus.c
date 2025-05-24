@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:46:19 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 16:58:59 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include <signal.h>
 #include <errno.h>
 
-static void	print_result(char *name, int status)
+static void	print_result(char *name, int status, int sig)
 {
-	int	sig;
-
 	if (WIFEXITED(status) == 0)
 	{
 		sig = WTERMSIG(status);
@@ -45,12 +43,12 @@ static void	print_result(char *name, int status)
 	ft_printf("%s\n", name);
 }
 
-static void	print_final_result(int count_success, int count_tests)
+static void	print_final_result(int c_success, int c_tests)
 {
-	if (count_success == count_tests)
-		ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_OK, count_success, count_tests, RESET);
+	if (c_success == c_tests)
+		ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_OK, c_success, c_tests, RESET);
 	else
-		ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_KO, count_success, count_tests, RESET);
+		ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_KO, c_success, c_tests, RESET);
 }
 
 static void alarm_handler(int sig)
@@ -100,7 +98,7 @@ int	launch_tests(t_unit_test *list)
 		if (wait_with_alarm(pid, &status, TIMEOUT_SECONDS) == -1)
 			ft_printf("%s[TIME]%s :%s (exceeded %d seconds)\n", COLOR_SIG, RESET, list->name, TIMEOUT_SECONDS);
 		else
-			print_result(list->name, status);
+			print_result(list->name, status, 0);
 		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
 			count_success++;
 		list = list->next;
