@@ -6,11 +6,13 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:01:56 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 16:46:19 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit_bonus.h"
+#include <signal.h>
+#include <errno.h>
 
 static void	print_result(char *name, int status)
 {
@@ -31,7 +33,7 @@ static void	print_result(char *name, int status)
             ft_printf("%s[PIPE]%s :", COLOR_SIG, RESET);
         else if (sig == SIGILL)
             ft_printf("%s[ILL]%s :", COLOR_SIG, RESET);
-        else if (sig == SIGTERM)
+        else if (sig == SIGALRM)
             ft_printf("%s[TIME]%s :", COLOR_SIG, RESET);
         else
             ft_printf("%s[SIG %d]%s :", COLOR_SIG, sig, RESET);
@@ -51,33 +53,31 @@ static void	print_final_result(int count_success, int count_tests)
         ft_printf("\n%s%d/%d tests passed.%s\n", COLOR_KO, count_success, count_tests, RESET);
 }
 
-static int wait_with_timeout(pid_t pid, int *status, int timeout)
+static void alarm_handler(int sig)
 {
-    pid_t result;
-    time_t start_time;
-    time_t current_time;
-    int time_elapsed;
+    (void)sig;
+}
 
-    start_time = time(NULL);
-    while (1)
+static int wait_with_alarm(pid_t pid, int *status, int timeout_sec)
+{
+    struct sigaction sa, old_sa;
+    pid_t result;
+    int was_timeout = 0;
+
+    sa.sa_handler = alarm_handler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGALRM, &sa, &old_sa);
+    alarm(timeout_sec);
+    result = waitpid(pid, status, 0);
+    if (alarm(0) == 0 && result == -1 && errno == EINTR)
     {
-        result = waitpid(pid, status, WNOHANG);
-        if (result != 0)
-            return result;
-        current_time = time(NULL);
-        time_elapsed = (int)(current_time - start_time);
-        
-        if (time_elapsed >= timeout)
-        {
-            kill(pid, SIGTERM);
-            usleep(10000);
-            if (waitpid(pid, status, WNOHANG) == 0)
-                kill(pid, SIGKILL);
-            waitpid(pid, status, 0);
-            return -1;
-        }
+        was_timeout = 1;
         usleep(10000);
+        waitpid(pid, status, WNOHANG);
     }
+    sigaction(SIGALRM, &old_sa, NULL);
+    return was_timeout ? -1 : result;
 }
 
 int	launch_tests(t_unit_test *list)
@@ -93,8 +93,12 @@ int	launch_tests(t_unit_test *list)
     {
         pid = fork();
         if (pid == 0)
+        {
+            // 子プロセスではアラームをリセット
+            signal(SIGALRM, SIG_DFL);
             exit(list->test_func());
-        if (wait_with_timeout(pid, &status, TIMEOUT_SECONDS) == -1)
+        }
+        if (wait_with_alarm(pid, &status, TIMEOUT_SECONDS) == -1)
             ft_printf("%s[TIME]%s :%s (exceeded %d seconds)\n", COLOR_SIG, RESET, list->name, TIMEOUT_SECONDS);
         else
             print_result(list->name, status);
