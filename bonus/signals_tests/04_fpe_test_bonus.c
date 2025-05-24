@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_launchers.h                                   :+:      :+:    :+:   */
+/*   04_fpe_test_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:03:22 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/24 16:01:31 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/24 16:01:32 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_LAUNCHERS_H
-# define TEST_LAUNCHERS_H
+#include "libunit_bonus.h"
+#include <signal.h>
 
-/* 共通テストスイートのランチャー関数 */
-int	strlen_launcher(void);
-int	strchr_launcher(void);
-int	atoi_launcher(void);
-
-#endif
+int fpe_test(void)
+{
+    int result = 0;
+    int zero = 0;
+    
+    result = 42 / zero;  // ここでSIGFPEが発生
+    return (result);
+}

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_launchers.h                                   :+:      :+:    :+:   */
+/*   01_segv_test_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:03:22 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/24 16:01:22 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/24 16:01:23 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_LAUNCHERS_H
-# define TEST_LAUNCHERS_H
+#include "libunit_bonus.h"
 
-/* 共通テストスイートのランチャー関数 */
-int	strlen_launcher(void);
-int	strchr_launcher(void);
-int	atoi_launcher(void);
-
-#endif
+int segv_test(void)
+{
+    char *ptr;
+    
+    ptr = NULL;
+    *ptr = 'a';
+    return (0);
+}

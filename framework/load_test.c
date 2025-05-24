@@ -6,12 +6,11 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:47 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 20:00:23 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 16:06:54 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "libft.h"
 
 static t_unit_test	*create_unit_test_node(char *name, int (*test_func)(void))
 {

@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_launchers.h                                   :+:      :+:    :+:   */
+/*   07_timeout_test_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:03:22 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/23 22:15:00 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/24 15:58:08 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_LAUNCHERS_H
-# define TEST_LAUNCHERS_H
+#include "libunit_bonus.h"
 
-/* 共通テストスイートのランチャー関数 */
-int	strlen_launcher(void);
-int	strchr_launcher(void);
-int	atoi_launcher(void);
-
-#endif
+int timeout_test(void)
+{
+    while (1)
+        ;
+    return (0);
+}

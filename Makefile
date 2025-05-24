@@ -6,50 +6,64 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/23 20:45:50 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/05/24 16:08:31 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	main.c \
-        srcs/launch_tests.c \
-        srcs/load_test.c \
-        tests/strlen/00_strlen_launcher.c \
-        tests/strlen/00_strlen_basic.c \
-        tests/strlen/01_strlen_null.c \
-        tests/strchr/00_strchr_launcher.c \
-        tests/strchr/01_strchr_basic.c \
-        tests/strchr/02_strchr_not_found.c \
-        tests/strchr/03_strchr_null_terminator.c \
-        tests/atoi/00_atoi_launcher.c \
-        tests/atoi/01_atoi_positive.c \
-        tests/atoi/02_atoi_negative.c \
-        tests/atoi/03_atoi_zero.c \
-        tests/atoi/04_atoi_space.c \
-        tests/atoi/05_atoi_plus_sign.c \
-        tests/signals/00_signals_launcher.c \
-        tests/signals/01_segv_test.c \
-        tests/signals/02_bus_test.c \
-        tests/signals/03_abrt_test.c \
-        tests/signals/04_fpe_test.c \
-        tests/signals/05_pipe_test.c \
-        tests/signals/06_ill_test.c \
-        tests/signals/07_timeout_test.c \
-        tests/signals/08_sleep_timeout_test.c
+COMMON_TESTS =	tests/strlen/00_strlen_launcher.c \
+		tests/strlen/00_strlen_basic.c \
+		tests/strlen/01_strlen_null.c \
+		tests/strchr/00_strchr_launcher.c \
+		tests/strchr/01_strchr_basic.c \
+		tests/strchr/02_strchr_not_found.c \
+		tests/strchr/03_strchr_null_terminator.c \
+		tests/atoi/00_atoi_launcher.c \
+		tests/atoi/01_atoi_positive.c \
+		tests/atoi/02_atoi_negative.c \
+		tests/atoi/03_atoi_zero.c \
+		tests/atoi/04_atoi_space.c \
+		tests/atoi/05_atoi_plus_sign.c
 
-OBJS = $(SRCS:.c=.o)
+MANDATORY_SRCS =	framework/main.c \
+		framework/launch_tests.c \
+		framework/load_test.c \
+		$(COMMON_TESTS)
+
+BONUS_SRCS =	bonus/main.c \
+		bonus/srcs/launch_tests.c \
+		bonus/srcs/load_test.c \
+		$(COMMON_TESTS) \
+		bonus/signals_tests/00_signals_launcher.c \
+		bonus/signals_tests/01_segv_test.c \
+		bonus/signals_tests/02_bus_test.c \
+		bonus/signals_tests/03_abrt_test.c \
+		bonus/signals_tests/04_fpe_test.c \
+		bonus/signals_tests/05_pipe_test.c \
+		bonus/signals_tests/06_ill_test.c \
+		bonus/signals_tests/07_timeout_test.c \
+		bonus/signals_tests/08_sleep_timeout_test.c
+
+MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 NAME = libunit
+BONUS_NAME = libunit_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I./includes -I./tests/strlen -I./tests/strchr -I./tests/atoi -I./srcs/libft/includes -I./srcs/printf/includes -I./tests/signals
 
-LIBFT_DIR = srcs/libft
+LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-PRINTF_DIR = srcs/printf
+PRINTF_DIR = ./printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
+INCLUDES = -I./framework -I./libft/includes -I./printf/includes -I./tests -I./real-tests
+BONUS_INCLUDES = -I./bonus/includes -I./libft/includes -I./printf/includes -I./tests -I./real-tests -I./bonus/signals_tests
+
+
 all: $(NAME)
+
+bonus: $(BONUS_NAME)
 
 $(LIBFT):
 	@echo "Building libft..."
@@ -59,23 +73,40 @@ $(PRINTF):
 	@echo "Building printf..."
 	@$(MAKE) -C $(PRINTF_DIR)
 
-$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
+$(NAME): $(LIBFT) $(PRINTF) $(MANDATORY_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(MANDATORY_OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
+
+$(BONUS_NAME): $(LIBFT) $(PRINTF) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_INCLUDES) -o $@ $(BONUS_OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
+
+framework/%.o: framework/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+bonus/%.o: bonus/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(BONUS_INCLUDES) -c $< -o $@
+
+tests/%.o real-tests/%.o: tests/%.c real-tests/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 %.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(MANDATORY_OBJS) $(BONUS_OBJS)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(PRINTF_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(MAKE) -C $(PRINTF_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+re_bonus: fclean bonus
+
+.PHONY: all bonus clean fclean re re_bonus

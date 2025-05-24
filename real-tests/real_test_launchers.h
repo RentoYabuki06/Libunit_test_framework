@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_launchers.h                                   :+:      :+:    :+:   */
+/*   real_test_launchers.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:03:22 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/24 20:13:45 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/24 16:02:48 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_LAUNCHERS_H
-# define TEST_LAUNCHERS_H
+#ifndef REAL_TEST_LAUNCHERS_H
+# define REAL_TEST_LAUNCHERS_H
 
-/* 共通テストスイートのランチャー関数 */
-int	strlen_launcher(void);
-int	strchr_launcher(void);
-int	atoi_launcher(void);
+/* 実際のテスト関数のプロトタイプ宣言 */
+int ft_strlen_launcher(void);
 
 #endif

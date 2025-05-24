@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   07_timeout_test.c                                  :+:      :+:    :+:   */
+/*   06_ill_test_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 22:15:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/23 20:44:57 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/05/24 16:01:37 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/24 16:01:38 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
+#include "libunit_bonus.h"
+#include <signal.h>
 
-int timeout_test(void)
+int ill_test(void)
 {
-    // 無限ループを作成してタイムアウトを発生させる
-    while (1)
-        ;
-    return (0); // この行は実行されない
+    raise(SIGILL);
+    return (0);
 }
