@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen_tests.h                                     :+:      :+:    :+:   */
+/*   01_atoi_positive.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 20:16:15 by enkwak           ###   ########.fr       */
+/*   Updated: 2025/05/18 19:56:23 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRLEN_TESTS_H
-# define STRLEN_TESTS_H
+#include "libunit.h"
+#include "libft.h"
 
-int	strlen_basic_test(void);
-int	strlen_null_test(void);
-
-#endif
+int	atoi_positive_test(void)
+{
+    if (ft_atoi("42") == 42)
+        return (0);
+    else
+        return (-1);
+}

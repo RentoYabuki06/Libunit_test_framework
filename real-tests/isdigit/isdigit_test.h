@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen_tests.h                                     :+:      :+:    :+:   */
+/*   isdigit_test.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 20:16:15 by enkwak           ###   ########.fr       */
+/*   Created: 2025/05/24 15:48:37 by enkwak            #+#    #+#             */
+/*   Updated: 2025/05/24 16:20:46 by enkwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRLEN_TESTS_H
-# define STRLEN_TESTS_H
+#ifndef ISDIGIT_TESTS_H
+# define ISDIGIT_TESTS_H
 
-int	strlen_basic_test(void);
-int	strlen_null_test(void);
+int	isdigit_number_test(void);
+int	isdigit_char_test(void);
+int	isdigit_other_test(void);
 
 #endif

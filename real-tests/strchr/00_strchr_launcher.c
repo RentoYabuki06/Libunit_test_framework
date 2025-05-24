@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_strlen_launcher.c                               :+:      :+:    :+:   */
+/*   00_strchr_launcher.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 20:20:03 by enkwak           ###   ########.fr       */
+/*   Updated: 2025/05/18 19:55:53 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "strlen_tests.h"
+#include "strchr_tests.h"
 
-int	strlen_launcher(void)
+int	strchr_launcher(void)
 {
     t_unit_test	*test_list;
-    int			result;
 
     test_list = NULL;
-    ft_printf("STRLEN:\n");
-    load_test(&test_list, "Basic test", &strlen_basic_test);
-    load_test(&test_list, "Empty string test", &strlen_null_test);
-    result = launch_tests(&test_list);
-    free_tests(&test_list);
-    return (result);
+    ft_printf("STRCHR:\n");
+    load_test(&test_list, "Basic test", &strchr_basic_test);
+    load_test(&test_list, "Character not found test", &strchr_not_found_test);
+    load_test(&test_list, "Null terminator test", &strchr_null_terminator_test);
+    return (launch_tests(test_list));
 }

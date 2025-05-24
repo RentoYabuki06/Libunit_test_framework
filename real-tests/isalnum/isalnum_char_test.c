@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen_tests.h                                     :+:      :+:    :+:   */
+/*   isalnum_char_test.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 20:16:15 by enkwak           ###   ########.fr       */
+/*   Created: 2025/05/24 15:58:33 by enkwak            #+#    #+#             */
+/*   Updated: 2025/05/24 16:01:44 by enkwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRLEN_TESTS_H
-# define STRLEN_TESTS_H
+#include "libunit.h"
+#include "libft.h"
 
-int	strlen_basic_test(void);
-int	strlen_null_test(void);
-
-#endif
+int	isalnum_char_test(void)
+{
+	if (ft_isalnum('a') == 1)
+		return (0);
+	else
+		return (-1);
+}

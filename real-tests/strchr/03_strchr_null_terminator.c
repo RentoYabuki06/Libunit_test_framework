@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen_tests.h                                     :+:      :+:    :+:   */
+/*   03_strchr_null_terminator.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 20:16:15 by enkwak           ###   ########.fr       */
+/*   Updated: 2025/05/18 19:56:07 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRLEN_TESTS_H
-# define STRLEN_TESTS_H
+#include "libunit.h"
+#include "libft.h"
 
-int	strlen_basic_test(void);
-int	strlen_null_test(void);
+int	strchr_null_terminator_test(void)
+{
+    char	*str;
 
-#endif
+    str = "Hello";
+    if (ft_strchr(str, '\0') == str + 5)
+        return (0);
+    else
+        return (-1);
+}

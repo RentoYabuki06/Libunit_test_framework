@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:14:46 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 19:29:26 by enkwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include "../real-tests/test_launchers.h"
 #include "../tests/test_launchers.h"
 
 int	main(void)
@@ -22,6 +23,11 @@ int	main(void)
 	result |= strlen_launcher();
 	result |= strchr_launcher();
 	result |= atoi_launcher();
+	result |= isalnum_launcher();
+	result |= isalpha_launcher();
+	result |= isascii_launcher();
+	result |= isdigit_launcher();
+	result |= isprint_launcher();
 	if (result == 0)
 		ft_printf("\nAll tests passed!\n");
 	else
