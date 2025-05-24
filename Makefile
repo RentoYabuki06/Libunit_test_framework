@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/24 16:08:31 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/05/24 16:11:18 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,19 +29,19 @@ MANDATORY_SRCS =	framework/main.c \
 		framework/load_test.c \
 		$(COMMON_TESTS)
 
-BONUS_SRCS =	bonus/main.c \
-		bonus/srcs/launch_tests.c \
-		bonus/srcs/load_test.c \
+BONUS_SRCS =	bonus/main_bonus.c \
+		bonus/srcs/launch_tests_bonus.c \
+		bonus/srcs/load_test_bonus.c \
 		$(COMMON_TESTS) \
-		bonus/signals_tests/00_signals_launcher.c \
-		bonus/signals_tests/01_segv_test.c \
-		bonus/signals_tests/02_bus_test.c \
-		bonus/signals_tests/03_abrt_test.c \
-		bonus/signals_tests/04_fpe_test.c \
-		bonus/signals_tests/05_pipe_test.c \
-		bonus/signals_tests/06_ill_test.c \
-		bonus/signals_tests/07_timeout_test.c \
-		bonus/signals_tests/08_sleep_timeout_test.c
+		bonus/signals_tests/00_signals_launcher_bonus.c \
+		bonus/signals_tests/01_segv_test_bonus.c \
+		bonus/signals_tests/02_bus_test_bonus.c \
+		bonus/signals_tests/03_abrt_test_bonus.c \
+		bonus/signals_tests/04_fpe_test_bonus.c \
+		bonus/signals_tests/05_pipe_test_bonus.c \
+		bonus/signals_tests/06_ill_test_bonus.c \
+		bonus/signals_tests/07_timeout_test_bonus.c \
+		bonus/signals_tests/08_sleep_timeout_test_bonus.c
 
 MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)

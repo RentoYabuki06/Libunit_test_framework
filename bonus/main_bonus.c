@@ -6,13 +6,13 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:02:07 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 16:15:03 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libunit_bonus.h"
-#include "tests/test_launchers.h"
-#include "real-tests/real_test_launchers.h"
+#include "./includes/libunit_bonus.h"
+#include "signals_tests/signals_tests_bonus.h"
+#include "../../tests/test_launchers.h"
 
 int	main(void)
 {
@@ -29,9 +29,9 @@ int	main(void)
     // シグナルテスト（Bonusのみ）
     result |= signals_launcher();
     
-    // 実際のテスト
-    if (ft_strlen_launcher != NULL)
-        result |= ft_strlen_launcher();
+    // // 実際のテスト
+    // if (ft_strlen_launcher != NULL)
+    //     result |= ft_strlen_launcher();
     
     if (result == 0)
         ft_printf("\n%sAll tests passed!%s\n", COLOR_OK, RESET);

@@ -6,13 +6,12 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:09:10 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 16:14:46 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "../tests/test_launchers.h"
-#include "../real-tests/real_test_launchers.h"
 
 int	main(void)
 {

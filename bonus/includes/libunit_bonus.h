@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 15:54:50 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 16:12:57 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <sys/wait.h>
 # include <sys/time.h>
 # include <signal.h>
-# include "libft.h"
-# include "ft_printf.h"
+# include "../../libft/includes/libft.h"
+# include "../../printf/includes/ft_printf.h"
 # include "colors_bonus.h"
 
 #define TIMEOUT_SECONDS 10
