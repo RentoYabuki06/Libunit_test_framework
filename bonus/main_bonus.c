@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 16:16:41 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/24 17:29:48 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 
 int	main(void)
 {
-    int	result;
+	int	result;
 
-    result = 0;
-    ft_printf("%s==== LIBUNIT BONUS TESTS ====%s\n\n", BOLD_CYAN, RESET);
-    result |= strlen_launcher();
-    result |= strchr_launcher();
-    result |= atoi_launcher();
-    result |= signals_launcher();    
-    if (result == 0)
-        ft_printf("\n%sAll tests passed!%s\n", COLOR_OK, RESET);
-    else
-        ft_printf("\n%sSome tests failed!%s\n", COLOR_KO, RESET);
-    return (result);
+	result = 0;
+	ft_printf("%s==== LIBUNIT BONUS TESTS ====%s\n\n", BOLD_CYAN, RESET);
+	result |= strlen_launcher();
+	result |= strchr_launcher();
+	result |= atoi_launcher();
+	result |= signals_launcher();
+	if (result == 0)
+		ft_printf("\n%sAll tests passed!%s\n", COLOR_OK, RESET);
+	else
+		ft_printf("\n%sSome tests failed!%s\n", COLOR_KO, RESET);
+	return (result);
 }
-
