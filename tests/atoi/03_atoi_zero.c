@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   03_atoi_zero.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:56:32 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 11:39:20 by enoch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
 
-int	atoi_zero_test(void)
+int	atoi_zero_test_te(void)
 {
     if (ft_atoi("0") == 0)
         return (0);

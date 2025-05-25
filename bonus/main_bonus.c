@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
+/*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 17:29:48 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/24 19:28:57 by enkwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libunit_bonus.h"
 #include "signals_tests/signals_tests_bonus.h"
 #include "../../tests/test_launchers.h"
+#include "../../real-tests/test_launchers.h"
 
 int	main(void)
 {
@@ -23,6 +24,11 @@ int	main(void)
 	result |= strlen_launcher();
 	result |= strchr_launcher();
 	result |= atoi_launcher();
+	result |= isalnum_launcher();
+	result |= isalpha_launcher();
+	result |= isascii_launcher();
+	result |= isdigit_launcher();
+	result |= isprint_launcher();
 	result |= signals_launcher();
 	if (result == 0)
 		ft_printf("\n%sAll tests passed!%s\n", COLOR_OK, RESET);
