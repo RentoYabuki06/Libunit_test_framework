@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 17:05:07 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:10:53 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static int	loop(char *func_name, t_unit_test *list, int c_success, int c_tests)
 int	launch_tests(t_unit_test **list, char *func_name)
 {
 	t_unit_test	*testlist;
+	int			ret;
 
 	testlist = NULL;
 	if (func_name == NULL)
@@ -88,5 +89,7 @@ int	launch_tests(t_unit_test **list, char *func_name)
 	if (testlist == NULL)
 		return (ft_printf("No tests found for %s.\n", func_name), -1);
 	ft_printf("\n------ [%s] test ------\n", func_name);
-	return (loop(func_name, testlist, 0, 0));
+	ret = loop(func_name, testlist, 0, 0);
+	free_tests(list);
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:33:56 by ryabuki           #+#    #+#             */
-/*   Updated: 2025/05/25 16:39:17 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:11:06 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	free_tests(t_unit_test **list)
 		free(tmp->name);
 		free(tmp);
 	}
+	*list = NULL;
 }
