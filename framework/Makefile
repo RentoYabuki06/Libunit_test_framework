@@ -6,13 +6,11 @@
 #    By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/25 14:31:35 by ryabuki          ###   ########.fr        #
+#    Updated: 2025/05/25 14:54:23 by ryabuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libunit.a
-BONUS_NAME = libunit_bonus.a
-SRC_DIR = srcs
 
 MANDATORY_SRCS =	srcs/launch_tests.c \
 					srcs/load_test.c \
@@ -43,7 +41,7 @@ LIB = -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
 
 all: $(NAME)
 
-bonus: $(BONUS_NAME)
+bonus: clean_mandatory .stamp_bonus
 
 $(LIBFT):
 	@echo "Building libft..."
@@ -56,8 +54,13 @@ $(PRINTF):
 $(NAME): $(LIBFT) $(PRINTF) $(MANDATORY_OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(MANDATORY_OBJS)
 
-$(BONUS_NAME): $(LIBFT) $(PRINTF) $(BONUS_OBJS)
-	$(AR) $(ARFLAGS) $(BONUS_NAME) $(BONUS_OBJS)
+.stamp_bonus: $(BONUS_OBJS)
+	@echo "Creating libunit.a from bonus only..."
+	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
+	touch .stamp_bonus
+
+clean_mandatory:
+	rm -f $(MANDATORY_OBJS)
 
 srcs/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
@@ -73,7 +76,7 @@ clean:
 	@$(MAKE) -C $(PRINTF_DIR) clean
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
+	rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(MAKE) -C $(PRINTF_DIR) fclean
 
