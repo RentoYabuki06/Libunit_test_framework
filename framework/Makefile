@@ -6,7 +6,7 @@
 #    By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/25 15:53:02 by ryabuki          ###   ########.fr        #
+#    Updated: 2025/05/25 17:12:00 by ryabuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ clean:
 	@$(MAKE) -C $(PRINTF_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) .stamp_bonus
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(MAKE) -C $(PRINTF_DIR) fclean
 
