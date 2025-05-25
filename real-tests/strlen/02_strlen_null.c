@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_strlen_null.c                                   :+:      :+:    :+:   */
+/*   02_strlen_null.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:27 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 16:51:48 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 int	strlen_null_test(void)
 {
-    if (ft_strlen("") == 0)
-        return (0);
-    else
-        return (-1);
+	if (ft_strlen("") == 0)
+		return (0);
+	else
+		return (-1);
 }
-
