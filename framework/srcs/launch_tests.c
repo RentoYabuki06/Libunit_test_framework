@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 16:43:09 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:05:07 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static int	loop(char *func_name, t_unit_test *list, int c_success, int c_tests)
 		pid = fork();
 		if (pid < 0)
 		{
-			perror("fork failed");
 			ft_printf("%s: %s: [Fork failed]\n", func_name, list->name);
 			list = list->next;
 			c_tests++;
