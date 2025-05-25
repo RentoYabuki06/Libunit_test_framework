@@ -1,3 +1,5 @@
+Looking at your codebase and framework, I'll update the README to include information about the new logging functionality.
+
 # 🧪 Libunit Test Framework
 
 <div align="center">
@@ -18,24 +20,37 @@ Libunit is a lightweight unit testing framework for C programs, inspired by mode
 - **🎨 Colorized Output**: Visual differentiation between passing, failing, and crashing tests
 - **📊 Detailed Reporting**: Provides clear summaries of test results
 - **🧩 Modular Design**: Easily extend with new test suites
+- **📝 Comprehensive Logging**: Detailed test logs with timestamps are generated for each function tested
+- **⏱️ Timeout Detection**: Tests that run too long are automatically terminated (bonus feature)
+- **🚦 Extended Signal Support**: Detection of various signals including SIGFPE, SIGPIPE, SIGILL (bonus feature)
 
 ## 🏗️ Project Structure
 
 ```
 libunit/
-├── includes/         # Header files
-│   ├── libunit.h     # Main framework header
-│   └── colors.h      # Color definitions for output
-├── srcs/             # Framework source code
-│   ├── launch_tests.c # Test runner implementation
-│   └── load_test.c   # Test registration functionality
-├── tests/            # Test suites
-│   ├── test_launchers.h  # Test launcher declarations
-│   ├── strlen/       # strlen test suite
-│   ├── strchr/       # strchr test suite
-│   └── atoi/         # atoi test suite
-├── main.c            # Example main program
-└── Makefile          # Build system
+├── framework/          # Main framework code
+│   ├── includes/       # Standard framework headers
+│   ├── srcs/           # Standard implementation
+│   └── bonus/          # Bonus features implementation
+│       ├── includes/
+│       └── srcs/
+├── libft/              # Basic utility functions
+├── printf/             # Custom printf implementation
+├── tests/              # Basic test suites
+│   ├── strlen/         # strlen test suite
+│   ├── strchr/         # strchr test suite
+│   └── atoi/           # atoi test suite
+├── real-tests/         # More comprehensive test suites
+│   ├── strlen/
+│   ├── strchr/
+│   ├── atoi/
+│   ├── isalnum/
+│   ├── isalpha/
+│   ├── isascii/
+│   ├── isdigit/
+│   └── isprint/
+├── signals_tests/      # Tests for signal handling features
+└── Makefile            # Build system
 ```
 
 ## 🚀 Getting Started
@@ -46,42 +61,51 @@ libunit/
 make
 ```
 
-This will compile the framework and all test suites, producing the `libunit` executable.
+This will compile the framework and all test suites.
 
-### Running the Tests
+### Running the Standard Tests
 
 ```bash
-./libunit
+./unit_tests
 ```
 
-### Example Output
+### Running the Real Tests
+
+```bash
+./real_tests
+```
+
+### Running the Signal Handling Tests
+
+```bash
+./signals_test_bonus
+```
+
+## 📊 Example Output
 
 When you run the tests, you'll see output similar to this:
 
 ```
 ==== LIBUNIT TESTS ====
 
-STRLEN:
-[OK]  :Basic test
-[OK]  :Empty string test
+STRLEN: Basic test : [OK]
+STRLEN: Empty string test : [OK]
 
-2/2 tests passed.
+2/2 tests checked.
 
-STRCHR:
-[OK]  :Basic test
-[OK]  :Character not found test
-[OK]  :Null terminator test
+STRCHR: Basic test : [OK]
+STRCHR: Not found test : [OK]
+STRCHR: Null terminator test : [OK]
 
-3/3 tests passed.
+3/3 tests checked.
 
-ATOI:
-[OK]  :Positive number test
-[OK]  :Negative number test
-[OK]  :Zero test
-[OK]  :Space test
-[OK]  :Plus sign test
+ATOI: Positive test : [OK]
+ATOI: Negative test : [OK]
+ATOI: Zero test : [OK]
+ATOI: Space test : [OK]
+ATOI: Plus sign test : [OK]
 
-5/5 tests passed.
+5/5 tests checked.
 
 All tests passed!
 ```
@@ -89,21 +113,27 @@ All tests passed!
 If there are failures, they will be highlighted like this:
 
 ```
-STRLEN:
-[OK]  :Basic test
-[KO]  :Empty string test
+STRLEN: Basic test : [OK]
+STRLEN: Empty string test : [KO]
 
-1/2 tests passed.
+1/2 tests checked.
 
 Some tests failed!
 ```
 
-Crashes are also detected and reported:
+Crashes are also detected and reported with colorized output:
 
 ```
-[SEGV] :Test with segmentation fault
-[BUSE] :Test with bus error
-[ABRT] :Test with abort signal
+SIGNALS: Segmentation fault (SIGSEGV) : [SEGV]
+SIGNALS: Bus error (SIGBUS) : [BUSE]
+SIGNALS: Abort (SIGABRT) : [ABRT]
+SIGNALS: Floating point exception (SIGFPE) : [FPE]
+SIGNALS: Broken pipe (SIGPIPE) : [PIPE]
+SIGNALS: Illegal instruction (SIGILL) : [ILL]
+SIGNALS: Infinite loop (TIMEOUT) : [TIME] :Infinite loop (TIMEOUT) (exceeded 10 seconds)
+SIGNALS: Sleep timeout (TIMEOUT) : [TIME] :Sleep timeout (TIMEOUT) (exceeded 10 seconds)
+
+0/8 tests checked.
 ```
 
 ## 📝 Creating New Tests
@@ -151,10 +181,9 @@ int my_function_launcher(void)
     t_unit_test *test_list;
 
     test_list = NULL;
-    ft_printf("MY_FUNCTION:\n");
     load_test(&test_list, "Basic functionality test", &my_function_test);
     // Add more tests...
-    return (launch_tests(test_list));
+    return (launch_tests(&test_list, "MY_FUNCTION"));
 }
 ```
 
@@ -181,6 +210,36 @@ SRCS += tests/my_function/00_my_function_launcher.c \
         tests/my_function/01_my_function_test.c
 ```
 
+## 📄 Log Files
+
+For each function tested, a log file is generated with detailed information:
+
+- Log files are named `[function_name].log`
+- Each log contains:
+  - Timestamp for the test run
+  - Function name being tested
+  - Each test case's name and result
+  - Detailed failure information for failed tests
+  - Summary of test statistics
+
+Example log file (`STRLEN.log`):
+
+```
+=== Test Run: Sun May 25 17:55:23 2025 ===
+Function: STRLEN
+
+[Sun May 25 17:55:23 2025] STRLEN: Basic test - OK
+
+[Sun May 25 17:55:23 2025] STRLEN: Empty string test - OK
+
+=== Summary ===
+Total tests: 2
+Passed: 2
+Failed: 0
+
+======================================
+```
+
 ## 🔍 Test Function Return Values
 
 - **0**: Test passed ✅
@@ -200,7 +259,33 @@ SRCS += tests/my_function/00_my_function_launcher.c \
    - The test function runs in the child process
    - The parent process waits for the child to complete
    - Results are collected and displayed
+   - Test results are logged to a file
 3. The process continues for each test in the list
+
+## 🎛️ Bonus Features
+
+### Timeout Detection
+
+Tests that run for more than 10 seconds (configurable via `TIMEOUT_SECONDS`) are automatically terminated and reported as timeouts.
+
+### Extended Signal Handling
+
+The framework detects and reports on a variety of signals:
+
+- `SIGSEGV`: Segmentation fault
+- `SIGBUS`: Bus error
+- `SIGABRT`: Abort
+- `SIGFPE`: Floating point exception
+- `SIGPIPE`: Broken pipe
+- `SIGILL`: Illegal instruction
+- `SIGALRM`: Timeout
+
+### Colorized Output
+
+Test results are displayed with colorized output for easier reading:
+- Green: Passed tests
+- Red: Failed tests
+- Yellow: Signal-related failures
 
 ## 📦 Dependencies
 
