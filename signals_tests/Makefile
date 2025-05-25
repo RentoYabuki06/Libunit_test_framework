@@ -6,7 +6,7 @@
 #    By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/25 16:46:30 by ryabuki           #+#    #+#              #
-#    Updated: 2025/05/25 15:55:17 by ryabuki          ###   ########.fr        #
+#    Updated: 2025/05/25 17:03:41 by ryabuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,10 @@ test: $(NAME)
 
 clean:
 	rm -f $(OBJS)
+	@$(MAKE) -C $(FRAMEWORK_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	@$(MAKE) -C $(FRAMEWORK_DIR) fclean
 
 re: fclean all
