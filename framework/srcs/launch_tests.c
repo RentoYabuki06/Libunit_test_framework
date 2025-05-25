@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 13:57:36 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 16:43:09 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,20 @@ static int	print_final_result(char count_success, int count_tests)
 	return (-1);
 }
 
-static int loop(char *func_name, t_unit_test *list)
+static int	loop(char *func_name, t_unit_test *list, int c_success, int c_tests)
 {
 	pid_t	pid;
 	int		status;
-	int		count_success;
-	int		count_tests;
-	
-	count_success = 0;
-	count_tests = 0;
+
 	while (list)
 	{
 		pid = fork();
 		if (pid < 0)
 		{
-			ft_printf("%s: %s: [System Error: fork failed]\n", func_name, list->name);
+			perror("fork failed");
+			ft_printf("%s: %s: [Fork failed]\n", func_name, list->name);
 			list = list->next;
-			count_tests++;
+			c_tests++;
 			continue ;
 		}
 		else if (pid == 0)
@@ -73,16 +70,16 @@ static int loop(char *func_name, t_unit_test *list)
 		waitpid(pid, &status, 0);
 		print_each_result(func_name, list->name, status);
 		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
-			count_success++;
+			c_success++;
 		list = list->next;
-		count_tests++;
+		c_tests++;
 	}
-	return (print_final_result(count_success, count_tests));
+	return (print_final_result(c_success, c_tests));
 }
 
 int	launch_tests(t_unit_test **list, char *func_name)
 {
-	t_unit_test *testlist;
+	t_unit_test	*testlist;
 
 	testlist = NULL;
 	if (func_name == NULL)
@@ -92,5 +89,5 @@ int	launch_tests(t_unit_test **list, char *func_name)
 	if (testlist == NULL)
 		return (ft_printf("No tests found for %s.\n", func_name), -1);
 	ft_printf("\n------ [%s] test ------\n", func_name);
-	return (loop(func_name, testlist));
+	return (loop(func_name, testlist, 0, 0));
 }

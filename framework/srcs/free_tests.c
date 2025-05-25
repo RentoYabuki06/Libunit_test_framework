@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:33:56 by ryabuki           #+#    #+#             */
-/*   Updated: 2025/05/24 17:41:48 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 16:39:17 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_tests(t_unit_test **list)
 	t_unit_test	*tmp;
 
 	if (!list || !*list)
-		return;
+		return ;
 	while (*list)
 	{
 		tmp = *list;
