@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   04_atoi_space.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 11:39:24 by enoch            ###   ########.fr       */
+/*   Updated: 2025/05/25 16:50:21 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	atoi_space_test_te(void)
 {
-    if (ft_atoi("  42") == 42)
-        return (0);
-    else
-        return (-1);
+	if (ft_atoi("  42") == 42)
+		return (0);
+	else
+		return (-1);
 }

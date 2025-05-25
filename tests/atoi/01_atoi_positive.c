@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_atoi_positive.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 11:39:14 by enoch            ###   ########.fr       */
+/*   Updated: 2025/05/25 16:50:45 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	atoi_positive_test_te(void)
 {
-    if (ft_atoi("42") == 42)
-        return (0);
-    else
-        return (-1);
+	if (ft_atoi("42") == 42)
+		return (0);
+	else
+		return (-1);
 }
