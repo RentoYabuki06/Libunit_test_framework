@@ -6,7 +6,7 @@
 #    By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/25 17:12:00 by ryabuki          ###   ########.fr        #
+#    Updated: 2025/05/25 17:40:36 by ryabuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ MANDATORY_SRCS =	srcs/launch_tests.c \
 
 BONUS_SRCS =	bonus/srcs/launch_tests_bonus.c \
 				bonus/srcs/load_test_bonus.c \
+				bonus/srcs/free_tests_bonus.c
 
 MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
