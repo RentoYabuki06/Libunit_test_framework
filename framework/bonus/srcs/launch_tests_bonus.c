@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 17:22:10 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 13:12:54 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	launch_tests(t_unit_test *list)
 		ft_printf("\n%s%d/%d", COLOR_OK, count_success, count_tests);
 	else
 		ft_printf("\n%s%d/%d", COLOR_KO, count_success, count_tests);
-	ft_printf("tests passed.%s\n", RESET);
+	ft_printf("tests checked.%s\n", RESET);
 	if (count_success == count_tests)
 		return (0);
 	return (-1);

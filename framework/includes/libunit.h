@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 13:51:32 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 14:31:52 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <signal.h>
-# include "../libft/includes/libft.h"
-# include "../printf/includes/ft_printf.h"
+# include "libft.h"
+# include "ft_printf.h"
 
 typedef struct s_unit_test
 {
