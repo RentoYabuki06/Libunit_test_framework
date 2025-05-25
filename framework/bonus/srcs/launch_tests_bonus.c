@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 17:43:17 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:46:16 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ static int	wait_with_alarm(pid_t pid, int *status, int timeout_sec)
 	return (result);
 }
 
-static void	loop(char *func_name, t_unit_test *list, int *count_success, int *count_tests)
+static void	loop(char *f_name, t_unit_test *list, int *c_success, int *c_test)
 {
 	pid_t	pid;
 	int		status;
 
 	while (list)
 	{
-		ft_printf("%s: %s : ", func_name, list->name);
+		ft_printf("%s: %s : ", f_name, list->name);
 		pid = fork();
 		if (pid == 0)
 		{
@@ -96,9 +96,9 @@ static void	loop(char *func_name, t_unit_test *list, int *count_success, int *co
 		else
 			print_result(status, 0);
 		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
-			(*count_success)++;
+			(*c_success)++;
 		list = list->next;
-		(*count_tests)++;
+		(*c_test)++;
 	}
 }
 
