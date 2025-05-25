@@ -6,12 +6,12 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:49:54 by enkwak            #+#    #+#             */
-/*   Updated: 2025/05/25 16:54:02 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:35 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "isalpha_test.h"
+#include "isalpha_tests.h"
 
 int	isalpha_launcher(void)
 {

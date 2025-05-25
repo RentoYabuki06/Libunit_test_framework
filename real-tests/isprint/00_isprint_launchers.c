@@ -6,12 +6,12 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:49:54 by enkwak            #+#    #+#             */
-/*   Updated: 2025/05/25 16:52:50 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:58 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "isprint_test.h"
+#include "isprint_tests.h"
 
 int	isprint_launcher(void)
 {

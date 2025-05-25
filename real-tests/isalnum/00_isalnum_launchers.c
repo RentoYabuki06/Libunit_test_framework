@@ -6,12 +6,12 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:49:54 by enkwak            #+#    #+#             */
-/*   Updated: 2025/05/25 16:54:25 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:27 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "isalnum_test.h"
+#include "isalnum_tests.h"
 
 int	isalnum_launcher(void)
 {

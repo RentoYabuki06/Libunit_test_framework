@@ -6,12 +6,12 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:49:54 by enkwak            #+#    #+#             */
-/*   Updated: 2025/05/25 16:53:44 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:42 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include "isascii_test.h"
+#include "isascii_tests.h"
 
 int	isascii_launcher(void)
 {
