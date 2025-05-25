@@ -3,71 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 17:59:05 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 13:57:36 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static void	print_result(char *name, int status)
+static void	print_each_result(char *func_name, char *test_name, int status)
 {
 	int	sig;
 
+	ft_printf("%s: %s : ", func_name, test_name);
 	if (WIFEXITED(status) == 0)
 	{
 		sig = WTERMSIG(status);
 		if (sig == SIGSEGV)
-			ft_printf("[SEGV] :");
+			ft_printf("[SEGV]");
 		else if (sig == SIGBUS)
-			ft_printf("[BUSE] :");
+			ft_printf("[BUSE]");
 		else if (sig == SIGABRT)
-			ft_printf("[ABRT] :");
+			ft_printf("[ABRT]");
 		else
-			ft_printf("[SIG %d] :", sig);
+			ft_printf("[SIG %d]", sig);
 	}
 	else if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
-		ft_printf("[OK]   :");
+		ft_printf("[OK]");
 	else
-		ft_printf("[KO]   :");
-	ft_printf("%s\n", name);
+		ft_printf("[KO]");
+	ft_printf("\n");
 }
 
-static void loop(t_unit_test *list, int *count_success, int *count_tests)
+static int	print_final_result(char count_success, int count_tests)
 {
-    pid_t	pid;
-	int		status;
-
-    while (list)
-	{
-		pid = fork();
-		if (pid == 0)
-			exit(list->test_func());
-		waitpid(pid, &status, 0);
-		print_result(list->name, status);
-		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
-			(*count_success)++;
-		list = list->next;
-		(*count_tests)++;
-	}
-}
-
-int	launch_tests(t_unit_test **list)
-{
-	int		count_success;
-	int		count_tests;
-    t_unit_test *testlist;
-
-	count_success = 0;
-	count_tests = 0;
-    testlist = NULL;
-    if (*list)
-        testlist = *list;
-    loop(testlist, &count_success, &count_tests);
-	ft_printf("\n%d/%d tests passed.\n", count_success, count_tests);
+	if (count_tests < 1)
+		return (-1);
+	if (count_tests == 1)
+		ft_printf("\n%d/1 test checked.\n", count_success);
+	else
+		ft_printf("\n%d/%d tests checked.\n", count_success, count_tests);
 	if (count_success == count_tests)
 		return (0);
 	return (-1);
+}
+
+static int loop(char *func_name, t_unit_test *list)
+{
+	pid_t	pid;
+	int		status;
+	int		count_success;
+	int		count_tests;
+	
+	count_success = 0;
+	count_tests = 0;
+	while (list)
+	{
+		pid = fork();
+		if (pid < 0)
+		{
+			ft_printf("%s: %s: [System Error: fork failed]\n", func_name, list->name);
+			list = list->next;
+			count_tests++;
+			continue ;
+		}
+		else if (pid == 0)
+			exit(list->test_func());
+		waitpid(pid, &status, 0);
+		print_each_result(func_name, list->name, status);
+		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+			count_success++;
+		list = list->next;
+		count_tests++;
+	}
+	return (print_final_result(count_success, count_tests));
+}
+
+int	launch_tests(t_unit_test **list, char *func_name)
+{
+	t_unit_test *testlist;
+
+	testlist = NULL;
+	if (func_name == NULL)
+		return (ft_printf("Error: function name is NULL.\n"), -1);
+	if (list && *list)
+		testlist = *list;
+	if (testlist == NULL)
+		return (ft_printf("No tests found for %s.\n", func_name), -1);
+	ft_printf("\n------ [%s] test ------\n", func_name);
+	return (loop(func_name, testlist));
 }
