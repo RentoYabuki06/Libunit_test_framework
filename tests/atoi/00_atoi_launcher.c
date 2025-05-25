@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 16:45:59 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:12:51 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	atoi_launcher_te(void)
 {
 	t_unit_test	*testlist;
 
+	testlist = NULL;
 	load_test(&testlist, "Positive test", &atoi_positive_test_te);
 	load_test(&testlist, "Negative test", &atoi_negative_test_te);
 	load_test(&testlist, "Zero test", &atoi_zero_test_te);
