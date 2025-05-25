@@ -6,7 +6,7 @@
 #    By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/25 14:54:23 by ryabuki          ###   ########.fr        #
+#    Updated: 2025/05/25 15:53:02 by ryabuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ $(PRINTF):
 $(NAME): $(LIBFT) $(PRINTF) $(MANDATORY_OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(MANDATORY_OBJS)
 
-.stamp_bonus: $(BONUS_OBJS)
+.stamp_bonus: $(LIBFT) $(PRINTF) $(BONUS_OBJS)
 	@echo "Creating libunit.a from bonus only..."
 	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
 	touch .stamp_bonus
