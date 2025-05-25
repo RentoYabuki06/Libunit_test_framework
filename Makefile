@@ -3,22 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+         #
+#    By: enoch <enoch@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/24 20:09:07 by enkwak           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/18 18:28:55 by yabukirento       #+#    #+#              #
-#    Updated: 2025/05/24 17:24:34 by enkwak           ###   ########.fr        #
+#    Updated: 2025/05/25 11:56:49 by enoch            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +42,24 @@ COMMON_TESTS =	real-tests/strlen/00_strlen_launcher.c \
 		real-tests/atoi/02_atoi_negative.c \
 		real-tests/atoi/03_atoi_zero.c \
 		real-tests/atoi/04_atoi_space.c \
-		real-tests/atoi/05_atoi_plus_sign.c
+		real-tests/atoi/05_atoi_plus_sign.c \
+		tests/atoi/00_atoi_launcher.c \
+		tests/atoi/02_atoi_negative.c \
+		tests/atoi/04_atoi_space.c \
+		tests/atoi/01_atoi_positive.c \
+		tests/atoi/03_atoi_zero.c \
+		tests/atoi/05_atoi_plus_sign.c \
+		tests/atoi/06_atoi_segv_test.c \
+		tests/atoi/07_atoi_fail_test.c \
+		tests/atoi/08_atoi_backchar.c \
+		tests/strchr/00_strchr_launcher.c \
+		tests/strchr/01_strchr_basic.c \
+		tests/strchr/02_strchr_not_found.c \
+		tests/strchr/03_strchr_null_terminator.c \
+		tests/strlen/00_strlen_basic.c \
+		tests/strlen/01_strlen_null.c \
+		tests/strlen/02_strlen_segv.c \
+		tests/strlen/03_strlen_wrong_value.c \
 
 MANDATORY_SRCS =	framework/main.c \
 		framework/launch_tests.c \
@@ -120,9 +125,17 @@ bonus/%.o: bonus/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(BONUS_INCLUDES) -c $< -o $@
 
-tests/%.o real-tests/%.o: tests/%.c real-tests/%.c
+tests/%.o: tests/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+real-tests/%.o: real-tests/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+# tests/%.o real-tests/%.o: tests/%.c real-tests/%.c
+# 	@mkdir -p $(dir $@)
+# 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 %.o: %.c
 	@mkdir -p $(dir $@)
@@ -142,7 +155,7 @@ re: fclean all
 
 re_bonus: fclean bonus
 
-.PHONY: all bonus clean fclean re re_bonus
+.PHONY: all bonus clean fclean re re_bonus test
 
 # COMMON_TESTS =	tests/strlen/00_strlen_launcher.c \
 # 		tests/strlen/00_strlen_basic.c \

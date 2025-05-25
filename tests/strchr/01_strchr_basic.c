@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   01_strchr_basic.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:57 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 11:49:30 by enoch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
-#include <string.h>
 
-int	strchr_basic_test(void)
+int	strchr_basic_test_te(void)
 {
     char	*str;
     char	*result;

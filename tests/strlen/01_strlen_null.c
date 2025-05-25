@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   01_strlen_null.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enkwak <enkwak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/24 20:19:54 by enkwak           ###   ########.fr       */
+/*   Updated: 2025/05/25 11:39:52 by enoch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
 
-int	strlen_null_test(void)
+int	strlen_null_test_te(void)
 {
     if (ft_strlen("") == 0)
         return (0);

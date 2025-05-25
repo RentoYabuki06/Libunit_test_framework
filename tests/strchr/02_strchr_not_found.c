@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   02_strchr_not_found.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:56:02 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 11:40:14 by enoch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
 
-int	strchr_not_found_test(void)
+int	strchr_not_found_test_te(void)
 {
     char	*str;
 

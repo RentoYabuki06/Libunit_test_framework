@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_strchr_launcher.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:53 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 11:42:39 by enoch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	strchr_launcher(void)
     load_test(&test_list, "Basic test", &strchr_basic_test);
     load_test(&test_list, "Character not found test", &strchr_not_found_test);
     load_test(&test_list, "Null terminator test", &strchr_null_terminator_test);
-    return (launch_tests(test_list));
+    return (launch_tests(&test_list));
 }

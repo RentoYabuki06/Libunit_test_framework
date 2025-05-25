@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   03_strchr_null_terminator.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/18 19:56:07 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/05/25 11:40:18 by enoch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
 
-int	strchr_null_terminator_test(void)
+int	strchr_segv_test_te(void)
 {
-    char	*str;
+	char *str = NULL;
+	char *ptr = ft_strchr(str, 'a');
 
-    str = "Hello";
-    if (ft_strchr(str, '\0') == str + 5)
-        return (0);
-    else
-        return (-1);
+	(void)ptr;
+	return (0);
 }
