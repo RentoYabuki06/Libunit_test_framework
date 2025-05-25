@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_strlen_wrong_value.c                            :+:      :+:    :+:   */
+/*   02_strlen_null.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/25 10:54:20 by enoch             #+#    #+#             */
-/*   Updated: 2025/05/25 11:40:00 by enoch            ###   ########.fr       */
+/*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/25 15:22:34 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
 
-int	strlen_wrong_value_test_te(void)
+int	strlen_null_test_te(void)
 {
-	if (ft_strlen("42Tokyo") == 100)
-		return (0);
-	else
-		return (-1);
+    if (ft_strlen("") == 0)
+        return (0);
+    else
+        return (-1);
 }
+

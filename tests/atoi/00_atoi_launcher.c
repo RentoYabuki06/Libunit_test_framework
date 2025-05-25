@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 13:49:05 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 15:20:46 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	atoi_launcher_te(void)
 {
 	t_unit_test *testlist = NULL;
 
-	load_test(&testlist, "BASIC", &atoi_minus_sign_test_te);
-	load_test(&testlist, "FAIL", &atoi_fail_test_te);
-	load_test(&testlist, "SEGV", &atoi_segv_test_te);
-    load_test(&testlist, "SEGV", &atoi_positive_test_te);
-    load_test(&testlist, "SEGV", &atoi_negative_test_te);
-    load_test(&testlist, "SEGV", &atoi_zero_test_te);
-    load_test(&testlist, "SEGV", &atoi_space_test_te);
-    load_test(&testlist, "SEGV", &atoi_plus_sign_test_te);
+    load_test(&testlist, "Positive test", &atoi_positive_test_te);
+    load_test(&testlist, "Negative test", &atoi_negative_test_te);
+    load_test(&testlist, "Zero test", &atoi_zero_test_te);
+    load_test(&testlist, "Space test", &atoi_space_test_te);
+    load_test(&testlist, "Plus sign test", &atoi_plus_sign_test_te);
+	load_test(&testlist, "Segmentation fault test", &atoi_segv_test_te);
+	load_test(&testlist, "Fail test", &atoi_fail_test_te);
+	load_test(&testlist, "Minus sign test", &atoi_minus_sign_test_te);
 	return (launch_tests(&testlist, "ATOI"));
 }

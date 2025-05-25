@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_launchers.h                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 20:30:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 15:13:28 by ryabuki          ###   ########.fr       */
+/*   Created: 2025/05/18 18:28:54 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/05/25 15:13:52 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_LAUNCHERS_H
-# define TEST_LAUNCHERS_H
+#include "libunit.h"
+#include "test_launchers.h"
 
-int	strlen_launcher_te(void);
-int	strchr_launcher_te(void);
-int	atoi_launcher_te(void);
+int	main(void)
+{
+	int	result;
 
-#endif
+	result = 0;
+	ft_printf("==== LIBUNIT TESTS ====\n\n");
+	result |= strlen_launcher_te();
+	result |= strchr_launcher_te();
+	result |= atoi_launcher_te();
+	if (result == 0)
+		ft_printf("\nAll tests passed!\n");
+	else
+		ft_printf("\nSome tests failed!\n");
+	return (result);
+}

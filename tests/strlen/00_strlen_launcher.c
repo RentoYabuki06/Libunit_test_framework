@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 13:44:25 by ryabuki           #+#    #+#             */
-/*   Updated: 2025/05/25 13:49:27 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/05/25 15:24:25 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	strlen_launcher_te(void)
 	t_unit_test	*testlist;
 
 	testlist = NULL;
-	load_test(&testlist, "STRLEN BASIC", &strlen_basic_test_te);
-    load_test(&testlist, "STRLEN BASIC", &strlen_null_test_te);
-	// load_test(&testlist, "STRLEN SEGV", &strlen_segv_test_te);
-	load_test(&testlist, "STRLEN WRONG VALUE", &strlen_wrong_value_test_te);
+	load_test(&testlist, "Basic test", &strlen_basic_test_te);
+    load_test(&testlist, "Null test", &strlen_null_test_te);
+	load_test(&testlist, "Segmantation fault test", &strlen_segv_test_te);
+	load_test(&testlist, "Wrong value test", &strlen_wrong_value_test_te);
 	return (launch_tests(&testlist, "STRLEN"));
 }

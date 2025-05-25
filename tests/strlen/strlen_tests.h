@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strlen_tests.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:00:00 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 11:41:08 by enoch            ###   ########.fr       */
+/*   Updated: 2025/05/25 15:23:46 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	strlen_basic_test_te(void);
 int	strlen_null_test_te(void);
-int		strlen_segv_tes_te(void);
-int		strlen_wrong_value_test_te(void);
+int	strlen_segv_test_te(void);
+int	strlen_wrong_value_test_te(void);
 
 #endif

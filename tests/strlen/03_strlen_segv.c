@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_strlen_null.c                                   :+:      :+:    :+:   */
+/*   03_strlen_segv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoch <enoch@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 18:28:52 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/05/25 11:39:52 by enoch            ###   ########.fr       */
+/*   Created: 2025/05/25 10:54:04 by enoch             #+#    #+#             */
+/*   Updated: 2025/05/25 15:23:01 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft.h"
 
-int	strlen_null_test_te(void)
+int	strlen_segv_test_te(void)
 {
-    if (ft_strlen("") == 0)
-        return (0);
-    else
-        return (-1);
-}
+	char	*str = NULL;
+	size_t	len = ft_strlen(str);
 
+	(void)len;
+	return (0);
+}
